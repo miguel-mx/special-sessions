@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    <h1>User</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Familyname</th>
+                <td>{{ user.familyName }}</td>
+            </tr>
+            <tr>
+                <th>Givenname</th>
+                <td>{{ user.givenName }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ user.gender }}</td>
+            </tr>
+            <tr>
+                <th>Institution</th>
+                <td>{{ user.institution }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ user.position }}</td>
+            </tr>
+            <tr>
+                <th>Degree</th>
+                <td>{{ user.degree }}</td>
+            </tr>
+            <tr>
+                <th>Phonenumber</th>
+                <td>{{ user.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ user.address }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ user.city }}</td>
+            </tr>
+            <tr>
+                <th>Postalcode</th>
+                <td>{{ user.postalCode }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ user.country }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ user.user }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Lastlogin</th>
+                <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lastip</th>
+                <td>{{ user.lastIp }}</td>
+            </tr>
+            <tr>
+                <th>Registerdate</th>
+                <td>{% if user.registerDate %}{{ user.registerDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Iduser</th>
+                <td>{{ user.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</div>
+{% endblock %}

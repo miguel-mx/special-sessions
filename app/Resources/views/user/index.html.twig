@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.13/b-1.2.4/datatables.min.css"/>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h2>Participantes</h2>
+
+    <table class="table table-bordered" id="participants_table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Institution</th>
+                <th>Position</th>
+                <th>Degree</th>
+                <th>City</th>
+                <th>Country</th>
+                {#<th>Actions</th>#}
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.familyName }} {{ user.givenName }}</a></td>
+                <td>{{ user.institution }}</td>
+                <td>{{ user.position }}</td>
+                <td>{{ user.degree }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.country }}</td>
+                {#<td>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('user_show', { 'id': user.id }) }}">show</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_new') }}">Create a new user</a>
+        </li>
+    </ul>
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.13/b-1.2.4/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#participants_table').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ]
+            } );
+        } );
+    </script>
+
+{% endblock %}

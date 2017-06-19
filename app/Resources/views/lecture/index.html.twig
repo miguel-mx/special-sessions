@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.13/b-1.2.4/datatables.min.css"/>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h2>Lectures</h2>
+
+    <table class="table table-bordered" id="lectures_table">
+        <thead>
+            <tr>
+                <th>Participante</th>
+                <th>Title</th>
+                <th>Area</th>
+                <th>Conferenceparticipant</th>
+                <th>Canceled</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lecture in lectures %}
+            <tr>
+                <td><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.id }}</a></td>
+                <td>{{ lecture.title }}</td>
+                <td>{{ lecture.area }}</td>
+                {#<td>{{ lecture.summary }}</td>#}
+                <td>{{ lecture.conferenceParticipant }}</td>
+                <td>{{ lecture.canceled }}</td>
+                <td>{{ lecture.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('lecture_show', { 'id': lecture.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('lecture_edit', { 'id': lecture.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lecture_new') }}">Create a new lecture</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.13/b-1.2.4/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#lectures_table').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ]
+            } );
+        } );
+    </script>
+
+{% endblock %}

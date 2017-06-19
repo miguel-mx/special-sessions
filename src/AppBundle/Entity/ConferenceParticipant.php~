@@ -1,0 +1,32 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ConferenceParticipant
+ *
+ * @ORM\Table(name="conference_participant")
+ * @ORM\Entity
+ */
+class ConferenceParticipant
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="conference_participant", type="string", length=50, nullable=true)
+     */
+    private $conferenceParticipant;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

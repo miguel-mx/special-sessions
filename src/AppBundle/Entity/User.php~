@@ -1,0 +1,137 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity
+ */
+class User
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="family_name", type="string", length=200, nullable=true)
+     */
+    private $familyName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="given_name", type="string", length=200, nullable=true)
+     */
+    private $givenName;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gender", type="integer", nullable=true)
+     */
+    private $gender;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="institution", type="string", length=150, nullable=true)
+     */
+    private $institution;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="position", type="string", length=100, nullable=true)
+     */
+    private $position;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="degree", type="integer", nullable=true)
+     */
+    private $degree;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone_number", type="string", length=15, nullable=true)
+     */
+    private $phoneNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=150, nullable=true)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=150, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="postal_code", type="string", length=15, nullable=true)
+     */
+    private $postalCode;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="country", type="integer", nullable=true)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user", type="string", length=45, nullable=true)
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=45, nullable=true)
+     */
+    private $password;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_login", type="datetime", nullable=true)
+     */
+    private $lastLogin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_ip", type="string", length=15, nullable=true)
+     */
+    private $lastIp;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="register_date", type="datetime", nullable=true)
+     */
+    private $registerDate;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="iduser", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $iduser;
+
+
+}
