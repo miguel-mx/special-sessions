@@ -7,18 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Lecture
  *
- * @ORM\Table(name="lecture")
+ * @ORM\Table(name="lecture", indexes={@ORM\Index(name="iduser", columns={"iduser"}), @ORM\Index(name="area", columns={"area"}), @ORM\Index(name="conference", columns={"conference_participant"})})
  * @ORM\Entity
  */
 class Lecture
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="iduser", type="integer", nullable=true)
-     */
-    private $iduser;
-
     /**
      * @var string
      *
@@ -27,25 +20,11 @@ class Lecture
     private $title;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="area", type="integer", nullable=true)
-     */
-    private $area;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="summary", type="text", length=65535, nullable=true)
      */
     private $summary;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="conference_participant", type="integer", nullable=true)
-     */
-    private $conferenceParticipant;
 
     /**
      * @var \DateTime
@@ -69,6 +48,36 @@ class Lecture
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\Areas
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Areas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="area", referencedColumnName="id")
+     * })
+     */
+    private $area;
+
+    /**
+     * @var \AppBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="iduser", referencedColumnName="id")
+     * })
+     */
+    private $iduser;
+
+    /**
+     * @var \AppBundle\Entity\ConferenceParticipant
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ConferenceParticipant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="conference_participant", referencedColumnName="id")
+     * })
+     */
+    private $conferenceParticipant;
 
 
 }

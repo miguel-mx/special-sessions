@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="gender", columns={"gender"}), @ORM\Index(name="degree", columns={"degree"}), @ORM\Index(name="country_index", columns={"country"})})
  * @ORM\Entity
  */
 class User
@@ -27,13 +27,6 @@ class User
     private $givenName;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="gender", type="integer", nullable=true)
-     */
-    private $gender;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="institution", type="string", length=150, nullable=true)
@@ -46,13 +39,6 @@ class User
      * @ORM\Column(name="position", type="string", length=100, nullable=true)
      */
     private $position;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="degree", type="integer", nullable=true)
-     */
-    private $degree;
 
     /**
      * @var string
@@ -81,13 +67,6 @@ class User
      * @ORM\Column(name="postal_code", type="string", length=15, nullable=true)
      */
     private $postalCode;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="country", type="integer", nullable=true)
-     */
-    private $country;
 
     /**
      * @var string
@@ -132,6 +111,36 @@ class User
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\Degree
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Degree")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="degree", referencedColumnName="id")
+     * })
+     */
+    private $degree;
+
+    /**
+     * @var \AppBundle\Entity\Gender
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Gender")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="gender", referencedColumnName="id")
+     * })
+     */
+    private $gender;
+
+    /**
+     * @var \AppBundle\Entity\Countries
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Countries")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="country", referencedColumnName="id")
+     * })
+     */
+    private $country;
 
 
 
@@ -182,29 +191,6 @@ class User
     }
 
     /**
-     * Set gender
-     *
-     * @param integer $gender
-     * @return User
-     */
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
-
-        return $this;
-    }
-
-    /**
-     * Get gender
-     *
-     * @return integer 
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
      * Set institution
      *
      * @param string $institution
@@ -248,29 +234,6 @@ class User
     public function getPosition()
     {
         return $this->position;
-    }
-
-    /**
-     * Set degree
-     *
-     * @param integer $degree
-     * @return User
-     */
-    public function setDegree($degree)
-    {
-        $this->degree = $degree;
-
-        return $this;
-    }
-
-    /**
-     * Get degree
-     *
-     * @return integer 
-     */
-    public function getDegree()
-    {
-        return $this->degree;
     }
 
     /**
@@ -363,29 +326,6 @@ class User
     public function getPostalCode()
     {
         return $this->postalCode;
-    }
-
-    /**
-     * Set country
-     *
-     * @param integer $country
-     * @return User
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return integer 
-     */
-    public function getCountry()
-    {
-        return $this->country;
     }
 
     /**
@@ -512,4 +452,79 @@ class User
     {
         return $this->id;
     }
+
+    /**
+     * Set degree
+     *
+     * @param \AppBundle\Entity\Degree $degree
+     * @return User
+     */
+    public function setDegree(\AppBundle\Entity\Degree $degree = null)
+    {
+        $this->degree = $degree;
+
+        return $this;
+    }
+
+    /**
+     * Get degree
+     *
+     * @return \AppBundle\Entity\Degree 
+     */
+    public function getDegree()
+    {
+        return $this->degree;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param \AppBundle\Entity\Gender $gender
+     * @return User
+     */
+    public function setGender(\AppBundle\Entity\Gender $gender = null)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return \AppBundle\Entity\Gender 
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \AppBundle\Entity\Countries $country
+     * @return User
+     */
+    public function setCountry(\AppBundle\Entity\Countries $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \AppBundle\Entity\Countries 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getFamilyName() . ' ' . $this->getGivenName();
+    }
+
 }

@@ -3,20 +3,21 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.13/b-1.2.4/datatables.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.css">
 {% endblock %}
 
 {% block body %}
 
-<div class="container">
+<div class="container-fluid">
     <h2>Participantes</h2>
 
-    <table class="table table-bordered" id="participants_table">
+    <table class="table table-condensed table-striped" id="participants_table">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Institution</th>
                 <th>Position</th>
-                <th>Degree</th>
+                {#<th>Degree</th>#}
                 <th>City</th>
                 <th>Country</th>
                 {#<th>Actions</th>#}
@@ -28,9 +29,9 @@
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.familyName }} {{ user.givenName }}</a></td>
                 <td>{{ user.institution }}</td>
                 <td>{{ user.position }}</td>
-                <td>{{ user.degree }}</td>
+                {#<td>{{ user.degree }}</td>#}
                 <td>{{ user.city }}</td>
-                <td>{{ user.country }}</td>
+                <td><span class="flag-icon flag-icon-{{ user.country.code|lower }}"></span> {{ user.country }}</td>
                 {#<td>#}
                     {#<ul>#}
                         {#<li>#}
@@ -58,15 +59,11 @@
 {% block javascripts %}
 
     {{ parent() }}
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.13/b-1.2.4/datatables.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
-            $('#participants_table').DataTable( {
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'excel', 'pdf'
-                ]
-            } );
+            $('#participants_table').DataTable();
         } );
     </script>
 

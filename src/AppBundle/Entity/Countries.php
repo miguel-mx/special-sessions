@@ -92,4 +92,9 @@ class Countries
     {
         return $this->id;
     }
+
+    public function __toString()
+    {
+        return (string) $this->getCountry();
+    }
 }

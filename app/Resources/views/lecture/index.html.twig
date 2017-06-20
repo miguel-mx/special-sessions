@@ -7,41 +7,37 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container-fluid">
     <h2>Lectures</h2>
 
-    <table class="table table-bordered" id="lectures_table">
+    <table class="table table-condensed table-striped" id="lectures_table">
         <thead>
             <tr>
                 <th>Participante</th>
-                <th>Title</th>
-                <th>Area</th>
-                <th>Conferenceparticipant</th>
-                <th>Canceled</th>
-                <th>Id</th>
-                <th>Actions</th>
+                <th>Título</th>
+                <th>Sesión</th>
+                <th>Tipo</th>
+
             </tr>
         </thead>
         <tbody>
         {% for lecture in lectures %}
             <tr>
-                <td><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.id }}</a></td>
+                <td><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.iduser }}</a></td>
                 <td>{{ lecture.title }}</td>
                 <td>{{ lecture.area }}</td>
                 {#<td>{{ lecture.summary }}</td>#}
                 <td>{{ lecture.conferenceParticipant }}</td>
-                <td>{{ lecture.canceled }}</td>
-                <td>{{ lecture.id }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('lecture_show', { 'id': lecture.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('lecture_edit', { 'id': lecture.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                {#<td>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('lecture_show', { 'id': lecture.id }) }}">show</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('lecture_edit', { 'id': lecture.id }) }}">edit</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
             </tr>
         {% endfor %}
         </tbody>
@@ -58,16 +54,21 @@
 {% block javascripts %}
 
     {{ parent() }}
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.13/b-1.2.4/datatables.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
-            $('#lectures_table').DataTable( {
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'excel', 'pdf'
-                ]
-            } );
+            $('#lectures_table').DataTable();
         } );
+    </script>
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
 
 {% endblock %}

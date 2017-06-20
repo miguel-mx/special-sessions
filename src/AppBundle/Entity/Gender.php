@@ -62,4 +62,10 @@ class Gender
     {
         return $this->id;
     }
+
+    public function __toString()
+    {
+        return (string) $this->getGender();
+    }
+
 }
