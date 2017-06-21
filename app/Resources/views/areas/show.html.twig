@@ -10,6 +10,7 @@
             <tr>
                 <td><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
                 <td><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
+                <td>{{ lecture.schedule|date('D d') }} - ({{ lecture.start|date('H:i') }} : {{ lecture.end|date('H:i') }})</td>
             </tr>
     {% endfor %}
     </table>

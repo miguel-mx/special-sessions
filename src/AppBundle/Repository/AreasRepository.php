@@ -22,7 +22,7 @@ class AreasRepository extends EntityRepository
                 "SELECT l FROM AppBundle:Lecture l
                   JOIN l.area a
                   WHERE a.area = :area
-                  ORDER BY l.title ASC"
+                  ORDER BY l.schedule, l.start ASC"
             )
             ->setParameter('area', $area)
             ->getResult();

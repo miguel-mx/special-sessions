@@ -13,7 +13,7 @@ class LectureType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('iduser')->add('title')->add('area')->add('summary')->add('conferenceParticipant')->add('recordDate')->add('canceled');
+        $builder->add('iduser')->add('title')->add('area')->add('summary')->add('schedule')->add('start')->add('end');
     }
     
     /**

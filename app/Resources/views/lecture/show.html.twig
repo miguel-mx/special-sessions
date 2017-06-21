@@ -14,6 +14,8 @@
                 {{ lecture.summary }}
             </div>
         </div>
+        <hr>
+        <i class="fa fa-calendar" aria-hidden="true"></i>  {{ lecture.schedule|date('Y-m-d') }} - ({{ lecture.start|date('H:i') }} : {{ lecture.end|date('H:i') }})
     </div>
 
     {##}

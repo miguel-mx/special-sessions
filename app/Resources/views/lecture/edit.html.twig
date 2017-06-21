@@ -1,12 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Lecture edit</h1>
+<div class="container">
+    <div class="page-header"><h2>Lecture</h2></div>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    <div class="alert-danger">{{ form_errors(edit_form) }}</div>
+    <div class="panel panel-info">
+        <div class="panel-heading"><strong><h4>{{ lecture.iduser }}</h4></strong></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><string>Title</string></label>
+                            {{ form_widget(edit_form.title, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(edit_form.title) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><string>Special Session</string></label>
+                            {{ form_widget(edit_form.area, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(edit_form.area) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><string>Abstract</string></label>
+                            {{ form_widget(edit_form.summary, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(edit_form.summary) }}</span>
+                        </div>
+                    </div>
+                </div>
+                {{ form_widget(edit_form) }}
+                <div class="page-header"></div>
+                <input class="btn btn-success" type="submit" value="Edit" />
+                {{ form_end(edit_form) }}
+
+            </div>
+        </div>
+    </div>
+
 
     <ul>
         <li>
@@ -18,4 +52,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+</div>
 {% endblock %}

@@ -36,9 +36,31 @@ class Lecture
     /**
      * @var integer
      *
-     * @ORM\Column(name="canceled", type="integer", nullable=false)
+     * @ORM\Column(name="canceled", type="integer", nullable=true)
      */
     private $canceled;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="schedule", type="date", nullable=true)
+     */
+    private $schedule;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start", type="time", nullable=true)
+     */
+    private $start;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end", type="time", nullable=true)
+     */
+    private $end;
+
 
     /**
      * @var integer
@@ -251,4 +273,54 @@ class Lecture
     {
         return $this->conferenceParticipant;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getSchedule()
+    {
+        return $this->schedule;
+    }
+
+    /**
+     * @param \DateTime $schedule
+     */
+    public function setSchedule($schedule)
+    {
+        $this->schedule = $schedule;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
+     * @param \DateTime $start
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEnd()
+    {
+        return $this->end;
+    }
+
+    /**
+     * @param \DateTime $end
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
+    }
+
+
 }
