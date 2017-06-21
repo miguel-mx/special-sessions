@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+
+    <div class="page-header"><h3>{{ area.area }}</h3></div>
+
+    <table class="table table-striped">
+    {% for lecture in lectures %}
+            <tr>
+                <td><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
+                <td><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
+            </tr>
+    {% endfor %}
+    </table>
+
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('areas_index') }}">Back to the list</a>#}
+        {#</li>#}
+        {#<li>#}
+            {#<a href="{{ path('areas_edit', { 'id': area.id }) }}">Edit</a>#}
+        {#</li>#}
+        {#<li>#}
+            {#{{ form_start(delete_form) }}#}
+                {#<input type="submit" value="Delete">#}
+            {#{{ form_end(delete_form) }}#}
+        {#</li>#}
+    {#</ul>#}
+</div>
+{% endblock %}

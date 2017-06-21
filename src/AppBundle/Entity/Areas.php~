@@ -8,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Areas
  *
  * @ORM\Table(name="areas")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AreasRepository")
+ *
  */
 class Areas
 {
@@ -36,4 +37,65 @@ class Areas
     private $id;
 
 
+
+    /**
+     * Set area
+     *
+     * @param string $area
+     * @return Areas
+     */
+    public function setArea($area)
+    {
+        $this->area = $area;
+
+        return $this;
+    }
+
+    /**
+     * Get area
+     *
+     * @return string 
+     */
+    public function getArea()
+    {
+        return $this->area;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Areas
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getArea();
+    }
 }

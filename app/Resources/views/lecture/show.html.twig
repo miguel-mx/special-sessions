@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <h3>{{ lecture.area }}</h3>
+        <h3><a href="{{ path('areas_show', { 'id': lecture.area.id }) }}">{{ lecture.area }}</a></h3>
         <h4>{{ lecture.conferenceParticipant }}</h4>
         <hr>
         <h3><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></h3>
