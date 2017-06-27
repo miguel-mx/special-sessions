@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Area controller.
  *
- * @Route("areas")
+ * @Route("session")
  */
 class AreasController extends Controller
 {
@@ -61,7 +61,7 @@ class AreasController extends Controller
     /**
      * Finds and displays a area entity.
      *
-     * @Route("/{id}", name="areas_show")
+     * @Route("/{slug}", name="areas_show")
      * @Method("GET")
      */
     public function showAction(Areas $area)
@@ -72,11 +72,30 @@ class AreasController extends Controller
         $lectures = $em->getRepository('AppBundle:Areas')
             ->findAllAreaLectures($area->getArea());
 
+        $monday = $em->getRepository('AppBundle:Areas')
+            ->findAreaLecturesByDate($area->getArea(), '2017-08-14');
+
+        $tuesday = $em->getRepository('AppBundle:Areas')
+            ->findAreaLecturesByDate($area->getArea(), '2017-08-15');
+
+        $thursday = $em->getRepository('AppBundle:Areas')
+            ->findAreaLecturesByDate($area->getArea(), '2017-08-17');
+
+        $friday = $em->getRepository('AppBundle:Areas')
+            ->findAreaLecturesByDate($area->getArea(), '2017-08-18');
+
+        $coffee = mktime(17, 0);
+
         $deleteForm = $this->createDeleteForm($area);
 
         return $this->render('areas/show.html.twig', array(
             'area' => $area,
             'lectures' => $lectures,
+            'monday' => $monday,
+            'tuesday' => $tuesday,
+            'thursday' => $thursday,
+            'friday' => $friday,
+            'coffee' => $coffee,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -84,7 +103,7 @@ class AreasController extends Controller
     /**
      * Displays a form to edit an existing area entity.
      *
-     * @Route("/{id}/edit", name="areas_edit")
+     * @Route("/{slug}/edit", name="areas_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Areas $area)
@@ -96,7 +115,7 @@ class AreasController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('areas_edit', array('id' => $area->getId()));
+            return $this->redirectToRoute('areas_edit', array('slug' => $area->getSlug()));
         }
 
         return $this->render('areas/edit.html.twig', array(

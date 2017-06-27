@@ -1,20 +1,99 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-prima.html.twig' %}
 
 {% block body %}
 <div class="container">
 
-    <div class="page-header"><h3>{{ area.area }}</h3></div>
+    <div class="session-title page-header"><h3>{{ area.area }}</h3></div>
 
-    <table class="table table-striped">
-    {% for lecture in lectures %}
+    <div class="organizers">
+        <h4>Organizers</h4>
+        <p>{{ area.description|raw }}</p>
+    </div>
+
+    <div class="page-header"></div>
+    <h4>Program</h4>
+
+    {% if monday %}
+        <div class="page-header"><h3 class="text-muted">Mon 14th</h3></div>
+        <table class="table table-striped">
+            {% for lecture in monday %}
+                <tr>
+                    {% if lecture.schedule is not null %}
+                        <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}:{{ lecture.end|date('H:i') }}</td>
+                    {% endif %}
+                    <td class="col-md-8"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
+                    <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
+                </tr>
+                {% if lecture.end|date('H:i') == coffee|date('H:i') %}
+                    <tr class="text-muted text-center"><td colspan="3">Coffee break</td></tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if tuesday %}
+        <div class="page-header"><h3 class="text-muted">Tue 15th</h3></div>
+        <table class="table table-striped">
+            {% for lecture in tuesday %}
+                <tr>
+                    {% if lecture.schedule is not null %}
+                        <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}:{{ lecture.end|date('H:i') }}</td>
+                    {% endif %}
+                    <td class="col-md-8"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
+                    <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
+                </tr>
+                {% if lecture.end|date('H:i') == coffee|date('H:i') %}
+                    <tr class="text-muted text-center"><td colspan="3">Coffee break</td></tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if thursday %}
+        <div class="page-header"><h3 class="text-muted">Thu 17th</h3></div>
+        <table class="table table-striped">
+            {% for lecture in thursday %}
+                <tr>
+                    {% if lecture.schedule is not null %}
+                        <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}:{{ lecture.end|date('H:i') }}</td>
+                    {% endif %}
+                    <td class="col-md-8"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
+                    <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if friday %}
+        <div class="page-header"><h3 class="text-muted">Fri 18th</h3></div>
+        <table class="table table-striped">
+        {% for lecture in friday %}
             <tr>
-                <td><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
-                <td><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
-                <td>{{ lecture.schedule|date('D d') }} - ({{ lecture.start|date('H:i') }} : {{ lecture.end|date('H:i') }})</td>
+                {% if lecture.schedule is not null %}
+                    <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}:{{ lecture.end|date('H:i') }}</td>
+                {% endif %}
+                <td class="col-md-8"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
+                <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
             </tr>
-    {% endfor %}
-    </table>
+        {% endfor %}
+        </table>
+    {% endif %}
 
+    {% if not monday and not tuesday and not thursday and not friday%}
+        <table class="table table-striped">
+            {% for lecture in lectures %}
+                <tr>
+                    {% if lecture.schedule is not null %}
+                        <td class="text-muted col-md-2">{{ lecture.schedule|date('D d') }} - ({{ lecture.start|date('H:i') }}:{{ lecture.end|date('H:i') }})</td>
+                    {% endif %}
+                    <td class="col-md-7"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
+                    <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <h1></h1>
     {#<ul>#}
         {#<li>#}
             {#<a href="{{ path('areas_index') }}">Back to the list</a>#}

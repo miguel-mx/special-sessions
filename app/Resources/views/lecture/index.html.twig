@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-prima.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -8,26 +8,26 @@
 {% block body %}
 
 <div class="container-fluid">
-    <h2>Lectures</h2>
+    <h2 class="prima-title">Talks</h2>
 
     <table class="table table-condensed table-striped" id="lectures_table">
         <thead>
             <tr>
-                <th>Participante</th>
-                <th>Título</th>
-                <th>Sesión</th>
-                <th>Tipo</th>
+                <th>Speaker</th>
+                <th>Title</th>
+                <th>Session</th>
+                {#<th>Type</th>#}
 
             </tr>
         </thead>
         <tbody>
         {% for lecture in lectures %}
             <tr>
-                <td><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.iduser }}</a></td>
-                <td>{{ lecture.title }}</td>
-                <td>{{ lecture.area }}</td>
+                <td><a href="{{ path('user_show', { 'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
+                <td><a href="{{ path('lecture_show', {'id': lecture.id }) }}">{{ lecture.title }}</a></td>
+                <td><a href="{{ path('areas_show', { 'slug': lecture.area.slug }) }}">{{ lecture.area }}</a></td>
                 {#<td>{{ lecture.summary }}</td>#}
-                <td>{{ lecture.conferenceParticipant }}</td>
+                {#<td>{{ lecture.conferenceParticipant }}</td>#}
                 {#<td>#}
                     {#<ul>#}
                         {#<li>#}
@@ -43,11 +43,11 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('lecture_new') }}">Create a new lecture</a>
-        </li>
-    </ul>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('lecture_new') }}">Create a new lecture</a>#}
+        {#</li>#}
+    {#</ul>#}
 </div>
 {% endblock %}
 

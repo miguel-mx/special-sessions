@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-prima.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -10,29 +10,31 @@
 <div class="container">
 
 <div class="container">
-    <h3>Participante</h3>
-    <h2>{{ user.familyName }} {{ user.givenName }}</h2>
+    <h3 class="text-muted">Speaker</h3>
+    <h2 class="session-title">{{ user.familyName }} {{ user.givenName }}</h2>
     {{ user.position }} <strong>{{ user.institution }}</strong><br>
     {{ user.degree }}<br>
-    {{ user.gender }}<br>
+    <strong><span class="flag-icon flag-icon-{{ user.country.code|lower }}"></span> {{ user.country }}</strong><br>
+    {#{{ user.gender }}<br>#}
     <br>
-    <address>
-        <abbr title="Phone">Tel:</abbr> {{ user.phoneNumber }}<br>
-        {{ user.address }}<br>
-        {{ user.city }}<br>
-        {{ user.postalCode }}<br>
-        <strong><span class="flag-icon flag-icon-{{ user.country.code|lower }}"></span> {{ user.country }}</strong><br>
-    </address>
+
+    {#<address>#}
+        {#<abbr title="Phone">Tel:</abbr> {{ user.phoneNumber }}<br>#}
+        {#{{ user.address }}<br>#}
+        {#{{ user.city }}<br>#}
+        {#{{ user.postalCode }}<br>#}
+        {#<strong><span class="flag-icon flag-icon-{{ user.country.code|lower }}"></span> {{ user.country }}</strong><br>#}
+    {#</address>#}
 
     <br>
-    <h4>Pláticas</h4>
+    <h4>Talks</h4>
 
     <table class="table">
         {% for lecture in lecures %}
             <tr>
                 <td><a href="{{ path('lecture_show', {'id': lecture.id }) }}">{{ lecture.title }}</a> </td>
                 <td>{{ lecture.conferenceparticipant }}</td>
-                <td><a href="{{ path('areas_show', { 'id': lecture.area.id }) }}">{{ lecture.area }}</a></td>
+                <td><a href="{{ path('areas_show', { 'slug': lecture.area.slug }) }}">{{ lecture.area }}</a></td>
             </tr>
         {% endfor %}
     </table>

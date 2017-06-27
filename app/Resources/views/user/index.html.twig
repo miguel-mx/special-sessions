@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-prima.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -9,7 +9,8 @@
 {% block body %}
 
 <div class="container-fluid">
-    <h2>Participantes</h2>
+
+    <h2 class="prima-title">Speakers</h2>
 
     <table class="table table-condensed table-striped" id="participants_table">
         <thead>
@@ -31,7 +32,7 @@
                 <td>{{ user.position }}</td>
                 {#<td>{{ user.degree }}</td>#}
                 <td>{{ user.city }}</td>
-                <td><span class="flag-icon flag-icon-{{ user.country.code|lower }}"></span> {{ user.country }}</td>
+                <td><span class="flag-icon flag-icon-{{ user.country.code|lower }}"></span> {{ user.country.code }}</td>
                 {#<td>#}
                     {#<ul>#}
                         {#<li>#}
@@ -47,11 +48,11 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_new') }}">Create a new user</a>
-        </li>
-    </ul>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('user_new') }}">Create a new user</a>#}
+        {#</li>#}
+    {#</ul>#}
 
 </div>
 {% endblock %}

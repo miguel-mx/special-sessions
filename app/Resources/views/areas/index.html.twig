@@ -1,26 +1,25 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-prima.html.twig' %}
 
 {% block body %}
 <div class="container">
 
-    <h1>Special Sessions</h1>
-    <div class="page-header"></div>
+    <div class="page-header"><h2>Special Sessions</h2></div>
 
     <table class="table table-striped">
         <tbody>
         {% for area in areas %}
             <tr>
-                <td><a href="{{ path('areas_show', { 'id': area.id }) }}">{{ area.area }}</a></td>
+                <td><a href="{{ path('areas_show', { 'slug': area.slug }) }}">{{ area.area }}</a></td>
                 <td class="text-left"><span class="label-info badge">{{ area.id | scount }}</span></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('areas_new') }}">Create a new area</a>
-        </li>
-    </ul>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('areas_new') }}">Create a new area</a>#}
+        {#</li>#}
+    {#</ul>#}
 </div>
 {% endblock %}

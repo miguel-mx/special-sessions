@@ -2,10 +2,26 @@
 # https://symfony.com/doc/current/security.html
 security:
 
+#    encoders:
+#        Symfony\Component\Security\Core\User\User:
+#            algorithm: bcrypt
+#            cost: 12
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost:      12
+
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    prima:
+                        password: $2y$12$SsBIhr3pNLXLQst9lfE1jOlDO7Baetz7w0XhJ8VRz3RvET0t3bPsS
+                        roles: 'ROLE_USER'
+                    admin:
+                        password: $2y$12$NdpI9GZ0xV53WkJgJ/TsaObp4QKxET/FwRU63BJxOilk7mMW8xJFW
+                        roles: 'ROLE_ADMIN'
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -15,6 +31,14 @@ security:
 
         main:
             anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: /
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path:   /logout
+                target: /
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
@@ -22,3 +46,6 @@ security:
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

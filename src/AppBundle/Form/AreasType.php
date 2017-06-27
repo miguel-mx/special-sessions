@@ -13,7 +13,7 @@ class AreasType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('area')->add('type');
+        $builder->add('area')->add('type')->add('slug')->add('description');
     }
     
     /**

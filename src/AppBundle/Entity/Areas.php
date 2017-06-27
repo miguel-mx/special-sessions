@@ -36,7 +36,15 @@ class Areas
      */
     private $id;
 
+    /**
+     * @ORM\Column(name="slug", type="string", length=128, unique=true, nullable=true)
+     */
+    private $slug;
 
+    /**
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
 
     /**
      * Set area
@@ -98,4 +106,37 @@ class Areas
     {
         return (string) $this->getArea();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
 }

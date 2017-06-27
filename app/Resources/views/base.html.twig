@@ -44,12 +44,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ path('lecture_index') }}">PRIMA Special Sessions</a>
+                <a class="navbar-brand" href="{{ path('areas_index') }}">PRIMA Special Sessions</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ path('user_index') }}">Participantes</a></li>
-                <li><a href="{{ path('lecture_index') }}">Pláticas</a></li>
-                <li><a href="{{ path('areas_index') }}">Sesiones</a></li>
+                <li><a href="{{ path('user_index') }}">Speakers</a></li>
+                <li><a href="{{ path('lecture_index') }}">Talks</a></li>
+                <li><a href="{{ path('areas_index') }}">Sessions</a></li>
             </ul>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <ul class="nav navbar-nav pull-right">

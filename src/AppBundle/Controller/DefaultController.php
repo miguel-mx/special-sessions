@@ -15,7 +15,7 @@ class DefaultController extends Controller
     {
 
         // redirect to the "homepage" route
-        return $this->redirectToRoute('lecture_index');
+        return $this->redirectToRoute('areas_index');
 
     }
 }

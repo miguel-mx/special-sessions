@@ -1,62 +1,495 @@
+@import url(https://fonts.google.com/specimen/Montserrat);
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
-  padding-top: 50px;
+    padding-top: 80px;
+    margin-bottom: 200px;
+    font-family: "Montserrat", sans-serif;
 }
 
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    min-height: 200px;
+    /* background: #323b44 none repeat scroll 0 0; */
+    background: #3AB34A none repeat scroll 0 0;
+    /*border-top: 1px solid #414f5a;*/
+    color: #ffffff;
+    padding: 20px 0 ;
 }
 
-.container .jumbotron, .container-fluid .jumbotron {
-    background: #416fad none repeat scroll 0 0;
-    color: white;
+.footer a, .footer a:hover, .footer a:focus, .footer a:hover, .footer a:visited, .footer a:active {
+    color: #fff;
 }
 
-.modal-dialog {
-     width: 1020px;
+.pacific {
+    font-family: "Montserrat", sans-serif;
+    font-size: 26px;
+    text-align: center;
+    align-content: center;
+    color: #ffffff;
+    padding-top: 15px;
+
 }
 
-label {
-    font-weight: 300;
+.label-info {
+    background-color: #6db7c2;
 }
 
-.icon-success {
-    color: #5cb85c;
+.copyright-footer {
+    padding-top: 15px;
+    margin-top: 20px;
 }
-.icon-info {
-    color: #5bc0de;
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
 }
-.icon-primary {
-    color: #337ab7;
+
+#logosfooter{
+    display: inline-block;
 }
-.icon-warning {
-    color: #f0ad4e;
+
+.logo {
+    vertical-align: middle;
+    height: 60px;
+    display: inline-block;
+    padding: 5px;
+    margin: auto;
 }
-.icon-danger {
-    color: #c9302c;
+
+.sponsor {
+    vertical-align: middle;
+    height: 100px;
+    display: block;
+    margin: auto;
 }
-.metric-container {
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    color: #676a6c;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding: 15px !important;
+
+.prima-banner {
+    background: url("../img/FirstPage_alebrije.png") no-repeat left center;
+    background-size: contain;
+    background-color: #6DB7C2;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    height: 380px;
+    font-size: 18px;
 }
-.metric-header {
-    margin-bottom: 10px;
-    margin-top: 10px;
+
+.prima-header {
+    background: url("../img/armadillo.png") no-repeat center center;
+    height: 250px;
+    background-size: contain;
+    background-color: #6DB7C2;
+    color: #cdbfe3;
+    padding: 30px 0;
+    margin-top: 120px;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
-.metric-label {
-    color: #428bca;
-    font-size: 85%;
-    font-weight: bold;
+
+.prima-header-content {
+    color: #ffffff;
+    width: 500px;
+    margin-left: 850px;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Nav bar */
+
+.navbar-default .navbar-nav > li > a {
+    color: #6db7ca;
+    font-size: 16px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.cd-primary-nav {
+    background: rgba(42, 108, 118, 0.88) none repeat scroll 0 0;
+}
+
+.navbar-default {
+    background-color: #ffffff;
+    border-color: #ccc;
+}
+
+.navbar-brand {
+    height: 80px;
+}
+
+.navbar-toggle {
+    padding: 10px;
+    margin: 25px 15px 25px 0;
+}
+
+.navbar-brand {
+    padding: 10px;
+}
+
+/*
+.cd-primary-nav .cd-label {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 2.4em 0 0.8em;
     text-transform: uppercase;
 }
+*/
 
-.theme-dropdown .dropdown-menu {
-    position: static;
-    display: block;
-    margin-bottom: 20px;
+/* termina navegación */
+/* Estilos del contenido */
+
+.prima-title {
+    text-align: center;
+    font-size: 25px;
+    color: #6CB7C3;
+    padding-top: 30px;
 }
+
+.prima-content {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 17px;
+    color: #888888;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .prima-content {
+        padding-top: 25px;
+        padding-bottom: 100px;
+    }
+}
+
+.prima-program {
+    padding-top: 25px;
+    padding-bottom: 100px;
+    font-size: 17px;
+    color: #888888;
+}
+
+
+.OrganizingCommittee{
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+
+}
+
+/* tab color */
+.nav-tabs>li>a {
+    background-color: #C6C1C1;
+    border-color: #C6C1C1;
+    color:#fff;
+}
+
+/* active tab color */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: #fff;
+    background-color: #6CB7C3;
+    border: 1px solid #6CB7C3;
+}
+
+/* hover tab color */
+.nav-tabs>li>a:hover {
+    border-color: #6CB7C3;
+    background-color: #6CB7C3;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+/* - */
+.page-header {
+    border-bottom: 0px;
+    color: #6db7c2;
+}
+
+.table-general > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    padding: 15px;
+    border-top: none !important;
+    border-bottom: none !important;
+    font-size: 15px;
+    color: #2C2C2C;
+    text-align: center;
+}
+
+.p-table-general {
+    padding-top: 15px;
+    color: #73BAC5;
+}
+
+.table-special > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    padding: 5px;
+    border-top: none !important;
+    border-bottom: none !important;
+    font-size: 15px;
+    color: #2C2C2C;
+    text-align: left;
+}
+
+/*.oaxaca-banner {
+    background:  url("../img/oaxaca-img.png") no-repeat center center;
+    background-size: cover;
+    color: #ffffff;
+    height: 430px;
+    margin-top: 20px;
+    padding-bottom: 200px;
+}*/
+
+.oaxaca-content {
+    padding-top: 50px;
+}
+
+.oaxaca-p {
+    color: #909090;
+    padding-bottom: 15px;
+}
+
+a, a:focus, a:hover, a:visited, a:active {
+    color: #6db7ca;
+}
+
+h4{
+    color:#5E5E5E;
+}
+
+.plenary h4 {
+    color: #6DB7C2;
+}
+
+.plenary p {
+    color: #777;
+}
+
+.img-thumbnail {
+    border: 3px solid yellow;
+    padding: 0px;
+}
+
+.oaxaca-banner{
+    background: #253340 url("../img/oaxaca-banner.png") no-repeat center center / cover ;
+    height: 100%;
+    border: medium none;
+    color: #fff;
+    min-height: 420px;
+    padding-top: 10px;
+}
+
+.oaxaca-banner h4 {
+    color: white;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.panel-timeline > .panel-heading {
+    background-color: #b2d8df;
+    border-color: #ddd;
+    color: #333;
+}
+
+.session {
+    background-color: #39b44a;
+}
+
+.special-session-a {
+    padding: 10px;
+    color: #333;
+    background-color: #E0D6EA;
+}
+
+.special-session-b {
+    padding: 10px;
+    color: #333;
+
+}
+
+.program-session-1 {
+    padding: 10px;
+    background-color: #E0D6EA;
+    color: #333;
+}
+
+.program-session-2 {
+    padding: 10px;
+    background-color: #D3C1E0;
+    color: #333;
+}
+
+.session-title {
+    color: #3ab34a;
+}
+
+.organizers {
+    color: #333;
+    font-size: 14px;
+}
+
+.row-flex, .row-flex > div[class*='col-'] {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 1 auto;
+}
+
+.row-flex-wrap {
+    -webkit-flex-flow: row wrap;
+    align-content: flex-start;
+    flex:0;
+}
+
+.row-flex > div[class*='col-'], .container-flex > div[class*='col-'] {
+    margin:-.2px; /* hack adjust for wrapping */
+}
+
+.container-flex > div[class*='col-'] div,.row-flex > div[class*='col-'] div {
+    width:100%;
+}
+
+.flex-col {
+    display: flex;
+    display: -webkit-flex;
+    flex: 1 100%;
+    flex-flow: column nowrap;
+}
+
+.flex-grow {
+    display: flex;
+    -webkit-flex: 2;
+    flex: 2;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    height: 450px;
+    margin-bottom: 10px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    z-index: 10;
+    background-color: rgba(0,0,255,0.3);
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+    height: 450px;
+    background-color: #777;
+}
+
+/* Makes images fully responsive */
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.carousel .item>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: 100%;
+}
+
+.media-object {
+    border: 2px solid yellow;
+    display: block;
+}
+
+.media-body {
+    padding-left: 15px;
+}
+
+.carousel-caption .h1 .small, .h1 small, .h2 .small, .h2 small, .h3 .small, .h3 small, .h4 .small, .h4 small, .h5 .small, .h5 small, .h6 .small, .h6 small, h1 .small, h1 small, h2 .small, h2 small, h3 .small, h3 small, h4 .small, h4 small, h5 .small, h5 small, h6 .small, h6 small {
+    color: #fff;
+}
+
+.map-container {
+    width: 100%;
+}
+
+.map-container iframe {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+    position: relative; /* IE needs a position other than static */
+}
+
+.map-container iframe.clicked {
+    pointer-events: auto;
+}
+
+/*breakpoin navbar */
+@media (max-width: 1199px) {
+    .navbar-header {
+        float: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+    .navbar-nav {
+        float: none !important;
+        margin: 7.5px -15px;
+    }
+
+    .navbar-nav > li {
+        float: none;
+    }
+
+    .navbar-nav > li > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+
+    .collapsing {
+        overflow: hidden !important;
+    }
+
+    .btn {
+        background-color: #ec008c;
+        color: #fff;
+        font-size: 14px;
+
+    }
+}
+

@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Lecture controller.
  *
- * @Route("lecture")
+ * @Route("talk")
  */
 class LectureController extends Controller
 {

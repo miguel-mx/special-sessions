@@ -27,4 +27,18 @@ class AreasRepository extends EntityRepository
             ->setParameter('area', $area)
             ->getResult();
     }
+
+    public function findAreaLecturesByDate($area, $date)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT l FROM AppBundle:Lecture l
+                  JOIN l.area a
+                  WHERE a.area = :area AND l.schedule = :date
+                  ORDER BY l.schedule, l.start ASC"
+            )
+            ->setParameter('area', $area)
+            ->setParameter('date', $date)
+            ->getResult();
+    }
 }
