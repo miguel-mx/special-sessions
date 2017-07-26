@@ -78,6 +78,9 @@ class AreasController extends Controller
         $tuesday = $em->getRepository('AppBundle:Areas')
             ->findAreaLecturesByDate($area->getArea(), '2017-08-15');
 
+        $wednesday = $em->getRepository('AppBundle:Areas')
+            ->findAreaLecturesByDate($area->getArea(), '2017-08-16');
+
         $thursday = $em->getRepository('AppBundle:Areas')
             ->findAreaLecturesByDate($area->getArea(), '2017-08-17');
 
@@ -93,6 +96,7 @@ class AreasController extends Controller
             'lectures' => $lectures,
             'monday' => $monday,
             'tuesday' => $tuesday,
+            'wednesday' => $wednesday,
             'thursday' => $thursday,
             'friday' => $friday,
             'coffee' => $coffee,

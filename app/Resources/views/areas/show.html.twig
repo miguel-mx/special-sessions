@@ -7,11 +7,12 @@
 
     <div class="organizers">
         <h4>Organizers</h4>
-        <p>{{ area.description|raw }}</p>
+        <span class="text-muted">
+            <p class="text-muted">{{ area.description|raw }}</p>
+        </span>
     </div>
 
-    <div class="page-header"></div>
-    <h4>Program</h4>
+    <div class="page-header"><h3 class="text-muted">Program</h3></div>
 
     {% if monday %}
         <div class="page-header"><h3 class="text-muted">Mon 14th</h3></div>
@@ -19,7 +20,7 @@
             {% for lecture in monday %}
                 <tr>
                     {% if lecture.schedule is not null %}
-                        <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}:{{ lecture.end|date('H:i') }}</td>
+                        <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}-{{ lecture.end|date('H:i') }}</td>
                     {% endif %}
                     <td class="col-md-8"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
                     <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
@@ -37,7 +38,25 @@
             {% for lecture in tuesday %}
                 <tr>
                     {% if lecture.schedule is not null %}
-                        <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}:{{ lecture.end|date('H:i') }}</td>
+                        <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}-{{ lecture.end|date('H:i') }}</td>
+                    {% endif %}
+                    <td class="col-md-8"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
+                    <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
+                </tr>
+                {% if lecture.end|date('H:i') == coffee|date('H:i') %}
+                    <tr class="text-muted text-center"><td colspan="3">Coffee break</td></tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if wednesday %}
+        <div class="page-header"><h3 class="text-muted">Wed 16th</h3></div>
+        <table class="table table-striped">
+            {% for lecture in wednesday %}
+                <tr>
+                    {% if lecture.schedule is not null %}
+                        <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}-{{ lecture.end|date('H:i') }}</td>
                     {% endif %}
                     <td class="col-md-8"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
                     <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
@@ -55,11 +74,14 @@
             {% for lecture in thursday %}
                 <tr>
                     {% if lecture.schedule is not null %}
-                        <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}:{{ lecture.end|date('H:i') }}</td>
+                        <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}-{{ lecture.end|date('H:i') }}</td>
                     {% endif %}
                     <td class="col-md-8"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
                     <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
                 </tr>
+                {% if lecture.end|date('H:i') == coffee|date('H:i') %}
+                    <tr class="text-muted text-center"><td colspan="3">Coffee break</td></tr>
+                {% endif %}
             {% endfor %}
         </table>
     {% endif %}
@@ -70,11 +92,14 @@
         {% for lecture in friday %}
             <tr>
                 {% if lecture.schedule is not null %}
-                    <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}:{{ lecture.end|date('H:i') }}</td>
+                    <td class="text-muted col-md-1">{{ lecture.start|date('H:i') }}-{{ lecture.end|date('H:i') }}</td>
                 {% endif %}
                 <td class="col-md-8"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
                 <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
             </tr>
+            {% if lecture.end|date('H:i') == coffee|date('H:i') %}
+                <tr class="text-muted text-center"><td colspan="3">Coffee break</td></tr>
+            {% endif %}
         {% endfor %}
         </table>
     {% endif %}
@@ -84,7 +109,7 @@
             {% for lecture in lectures %}
                 <tr>
                     {% if lecture.schedule is not null %}
-                        <td class="text-muted col-md-2">{{ lecture.schedule|date('D d') }} - ({{ lecture.start|date('H:i') }}:{{ lecture.end|date('H:i') }})</td>
+                        <td class="text-muted col-md-2">{{ lecture.schedule|date('D d') }} - ({{ lecture.start|date('H:i') }}-{{ lecture.end|date('H:i') }})</td>
                     {% endif %}
                     <td class="col-md-7"><a href="{{ path('lecture_show', { 'id': lecture.id }) }}">{{ lecture.title }}</a></td>
                     <td class="col-md-3"><a href="{{ path('user_show', {'id': lecture.iduser.id }) }}">{{ lecture.iduser }}</a></td>
@@ -108,4 +133,19 @@
         {#</li>#}
     {#</ul>#}
 </div>
+{% endblock %}
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
 {% endblock %}
